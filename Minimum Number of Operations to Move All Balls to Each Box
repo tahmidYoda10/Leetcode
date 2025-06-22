@@ -1,0 +1,25 @@
+class Solution {
+    public int[] minOperations(String boxes) {
+        int n = boxes.length();
+        int[] ans = new int[n];
+
+        //left
+        int lb = 0;
+        int lo = 0;
+        for(int i = 0; i < n; i++){
+            ans[i] += lo;  
+            if(boxes.charAt(i) == '1') lb++; 
+            lo += lb;
+        }
+        
+        //right
+        int rb = 0;
+        int ro = 0;
+        for(int i = n-1; i >= 0; i--){ 
+            ans[i] += ro;  
+            if(boxes.charAt(i) == '1') rb++;
+            ro += rb;
+        }
+        return ans;
+    }
+}
